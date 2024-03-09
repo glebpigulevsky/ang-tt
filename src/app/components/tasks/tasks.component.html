@@ -1,0 +1,6 @@
+<app-task-item
+  *ngFor="let task of tasks"
+  [task]="task"
+  (deleteTask)="deleteTask(task.id)"
+  (setReminder)="setReminder(task.id)"
+></app-task-item>
