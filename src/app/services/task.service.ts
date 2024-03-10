@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from 'app/Task';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
   private apiUrl = 'http://localhost:3000/tasks';
+  private taskCreatedSubject = new Subject<void>();
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Array<Task>> {
@@ -34,5 +35,18 @@ export class TaskService {
         );
       })
     );
+  }
+
+  createTask(task: Task) {
+    return this.http.post(this.apiUrl, task).pipe(
+      tap(() => this.emitTaskCreated()));
+  }
+
+  emitTaskCreated() {
+    this.taskCreatedSubject.next();
+  }
+
+  taskCreated(): Observable<void> {
+    return this.taskCreatedSubject.asObservable();
   }
 }

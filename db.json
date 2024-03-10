@@ -16,12 +16,12 @@
       "id": "3",
       "text": "Food Shopping",
       "day": "May 7th at 12:30pm",
-      "reminder": false
+      "reminder": true
     },
     {
-      "id": "4",
-      "text": "Test",
-      "day": "May 7th at 12:30pm",
+      "id": "e180",
+      "text": "123",
+      "day": "123",
       "reminder": false
     }
   ]

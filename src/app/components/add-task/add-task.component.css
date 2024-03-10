@@ -1,0 +1,11 @@
+.add-form {
+  margin-bottom: 40px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5;
+}
